@@ -10,6 +10,7 @@
            use App\home;
         @endphp
         @php($hehe = home::find(1))
+        @php($logooo = $hehe->logo )
         <img src="{{ url('private/images', [$hehe->logo]) }}" alt="IMG-LOGO" >
     </a>
     <!-- Menu -->
@@ -68,8 +69,8 @@
 <!-- Header Mobile -->
 <div class="wrap_header_mobile">
         <!-- Logo moblie -->
-        <a href="#" class="logo-mobile">
-            <img src="private/images/logo.png" alt="IMG-LOGO"  >
+        <a href="{{ url('/', []) }}" class="logo-mobile">
+            <img src="{{ url('private/images', [$hehe->logo]) }}" alt="IMG-LOGO" >
         </a>
 
         <!-- Button show menu -->
@@ -116,10 +117,6 @@
              
     
 
-
-            <li class="item-menu-mobile">
-                <a href="{{ url('/', []) }}">Home</a>
-            </li>
             @php($subcat = categories::select('sub_kategori')->where('deleted','=',0)->get())
             @foreach ($subcat as $subcats)                    
             <li class="item-menu-mobile">
